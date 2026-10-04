@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Integridad · Octubre · 2ºA · Mr. Ríos</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800;900&display=swap');
+:root{
+  --bg:#79c9f3;--bg2:#bdeaff;--cream:#fffdf7;--ink:#24405b;--lime:#b9ed74;
+  --mint:#82dfb0;--yellow:#ffe36e;--coral:#ff8d82;--blue:#8fd7ff;--violet:#c7aef4;
+  --scale:1;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;font-family:Nunito,Arial,sans-serif;background:var(--bg2);color:var(--cream)}
+body{font-size:calc(18px * var(--scale))}
+button{font:inherit}
+.bg{position:fixed;inset:0;overflow:hidden;pointer-events:none;background:
+ radial-gradient(circle at 12% 18%,#ffffffaa 0 4px,transparent 5px),
+ radial-gradient(circle at 80% 20%,#ffffff88 0 5px,transparent 6px),
+ linear-gradient(145deg,var(--bg),var(--bg2))}
+.leaf{position:absolute;opacity:.11;font-size:5rem;animation:float 10s ease-in-out infinite}
+.l1{left:4%;top:16%}.l2{right:5%;top:35%;animation-delay:-3s}.l3{left:30%;bottom:3%;animation-delay:-6s}.l4{right:28%;top:5%;animation-delay:-8s}
+@keyframes float{50%{transform:translateY(-18px) rotate(8deg)}}
+header{height:76px;position:fixed;z-index:30;top:0;left:0;right:0;display:flex;align-items:center;gap:12px;padding:10px 18px;background:#3e78a9f2;border-bottom:1px solid #ffffff22;backdrop-filter:blur(8px)}
+.brand{font-weight:900;white-space:nowrap}.brand span{color:var(--lime)}
+.nav{display:flex;gap:7px;flex:1;justify-content:center}
+.nav button,.tool{border:1px solid #ffffff2d;color:white;background:#ffffff10;border-radius:13px;padding:9px 12px;font-weight:900;cursor:pointer}
+.nav button.active{background:var(--lime);color:#24405b;border-color:transparent}
+.tools{display:flex;gap:6px}.tool:hover,.nav button:hover{background:#ffffff20}.nav button.active:hover{background:var(--lime)}
+.deck{position:fixed;inset:76px 0 0;z-index:5}
+.slide{position:absolute;inset:0;display:none;padding:26px 5vw 86px;align-items:center;justify-content:center}
+.slide.active{display:flex;animation:in .28s ease}
+@keyframes in{from{opacity:0;transform:translateX(18px)}}
+.panel{width:min(1120px,94vw);max-height:calc(100vh - 190px);overflow:auto;background:var(--cream);color:var(--ink);border-radius:30px;padding:30px 36px;box-shadow:0 18px 50px #0005;border:3px solid #ffffff}
+.kicker{font-size:.72em;letter-spacing:1.7px;text-transform:uppercase;font-weight:900;color:#6b7691}
+h1,h2{line-height:1.04;margin:.2em 0 .35em}h1{font-size:2.55em}h2{font-size:2em}.accent{color:#6a55ad}
+.bigline{font-size:1.4em;font-weight:900}.center{text-align:center}
+.pill{display:inline-block;border-radius:999px;background:#e8f6d2;padding:9px 16px;font-weight:900;margin:4px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{border:2px solid #dce7df;background:white;border-radius:22px;padding:20px;box-shadow:0 6px 0 #d9e4dd}
+.card h3{margin:0 0 7px}.emoji{font-size:3.3em}.mission{cursor:pointer;transition:.15s}.mission:hover{transform:translateY(-4px)}
+.mission:nth-child(1){border-top:8px solid var(--mint)}.mission:nth-child(2){border-top:8px solid var(--blue)}.mission:nth-child(3){border-top:8px solid var(--yellow)}.mission:nth-child(4){border-top:8px solid var(--violet)}
+.btn{border:0;border-radius:17px;padding:13px 19px;font-weight:900;cursor:pointer;box-shadow:0 5px 0 #0002;margin:5px}.btn:active{transform:translateY(4px);box-shadow:0 1px 0 #0002}
+.dark{background:#5b77c8;color:white}.green{background:#82da9a}.yellow{background:#ffe279}.red{background:#ff9287}.blue{background:#8bd4ff}.violet{background:#c8b4f1}.soft{background:#eef3f0}
+.scenario{font-size:1.4em;font-weight:900;background:white;border:3px dashed #9db6ac;border-radius:22px;padding:22px;margin:15px auto;max-width:850px}
+.feedback{background:#edf7ee;border-radius:18px;padding:16px;margin:14px auto;max-width:850px;font-weight:800}
+.traffic{display:flex;gap:15px;justify-content:center;margin:15px}.light{width:90px;height:90px;border-radius:50%;border:5px solid #24433a;cursor:pointer;box-shadow:inset 0 -8px #0002}.lr{background:#ff6e66}.ly{background:#ffd64f}.lg{background:#65d37e}
+.storybox{min-height:250px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.flow{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;align-items:center}.flow span{background:white;border:2px solid #d8e5dd;padding:13px;border-radius:16px;font-weight:900}
+.compass{width:220px;height:220px;border:12px solid #5e4c98;border-radius:50%;margin:8px auto;display:grid;place-items:center;background:#f4f0ff;position:relative}.needle{height:110px;width:18px;background:linear-gradient(var(--coral) 50%,#354f48 50%);clip-path:polygon(50% 0,100% 50%,65% 50%,65% 100%,35% 100%,35% 50%,0 50%);animation:needle 3s ease-in-out infinite;transform-origin:50% 50%}@keyframes needle{50%{transform:rotate(70deg)}}
+.promise{text-align:left;display:inline-block;background:#fff2b8;padding:18px 28px;border-radius:22px;font-size:1.22em;line-height:1.75;font-weight:800}
+.cat{width:128px;height:112px;background:#202524;border-radius:50% 50% 43% 43%;position:relative;margin:0 auto 14px}.ear{position:absolute;top:-25px;width:50px;height:56px;background:#202524;clip-path:polygon(50% 0,100% 100%,0 100%)}.ear.a{left:7px;transform:rotate(-10deg)}.ear.b{right:7px;transform:rotate(10deg)}.eye{position:absolute;top:42px;width:22px;height:27px;border-radius:50%;background:#ffd931}.eye.a{left:30px}.eye.b{right:30px}.eye:after{content:"";position:absolute;left:9px;top:2px;width:4px;height:22px;background:#1c2521;border-radius:50%}
+footer{position:fixed;left:0;right:0;bottom:0;height:68px;z-index:30;background:#3e78a9f2;display:flex;align-items:center;justify-content:space-between;padding:10px 22px;border-top:1px solid #ffffff22}
+footer button{border:0;border-radius:13px;padding:10px 16px;font-weight:900;cursor:pointer}.counter{font-weight:900;color:#d7e8df}
+.confetti{position:fixed;z-index:99;top:-40px;font-size:25px;animation:fall 2.3s linear forwards}@keyframes fall{to{transform:translateY(115vh) rotate(720deg);opacity:.2}}
+@media(max-width:900px){.brand{display:none}.nav{overflow:auto;justify-content:flex-start}.panel{padding:22px}.grid2,.grid3{grid-template-columns:1fr}h1{font-size:2em}.tools .label{display:none}}
+
+.mission,.card,.scenario,.feedback,.promise{border-width:3px}
+.panel{border:5px solid #fff;box-shadow:0 14px 0 #6aa8d1,0 25px 55px #35658c55}
+.card{box-shadow:0 7px 0 #caddea}
+h1,h2,h3{font-weight:900}.mission{background:#fff}
+.nav button{box-shadow:0 3px 0 #2f638f}.nav button:active{transform:translateY(2px);box-shadow:0 1px 0 #2f638f}
+.btn{border:2px solid #ffffffaa}
+.lang{background:#ffe36e!important;color:#24405b!important;min-width:82px}
+.sticker{position:absolute;font-size:2.4rem;filter:drop-shadow(0 3px 0 #fff8);animation:wiggle 3s ease-in-out infinite}
+@keyframes wiggle{50%{transform:rotate(8deg) scale(1.08)}}
+.panel:before{content:"⭐";position:absolute;left:18px;top:16px;font-size:1.5rem;opacity:.28}
+.panel:after{content:"🌈";position:absolute;right:18px;bottom:14px;font-size:1.7rem;opacity:.25}
+</style>
+</head>
+<body>
+<div class="bg"><div class="leaf l1">🌈</div><div class="leaf l2">⭐</div><div class="leaf l3">☁️</div><div class="leaf l4">✨</div></div>
+<header>
+  <div class="brand">Mr. <span>Ríos</span> · 2ºA</div>
+  <nav class="nav" id="nav">
+    <button onclick="go(0)">Inicio</button><button onclick="go(2)">🚦 Semáforo</button><button onclick="go(5)">🗣️👣 ¿Coinciden?</button><button onclick="go(8)">✏️ Lápiz roto</button><button onclick="go(13)">🧭 Brújula</button>
+  </nav>
+  <div class="tools"><button class="tool lang" id="langBtn" onclick="toggleLanguage()">🇪🇸 ES</button><button class="tool" onclick="size(-1)">A−</button><button class="tool" onclick="size(0)">A</button><button class="tool" onclick="size(1)">A+</button></div>
+</header>
+
+<main class="deck" id="deck">
+<section class="slide active"><div class="panel center">
+ <div class="cat"><i class="ear a"></i><i class="ear b"></i><i class="eye a"></i><i class="eye b"></i></div>
+ <div class="kicker">Educación del Carácter · Octubre · 2.º de Primaria</div>
+ <h1>🧭 La aventura de la <span class="accent">INTEGRIDAD</span></h1>
+ <p class="bigline">«Lo que digo y lo que hago»</p>
+ <p class="pill">💬 Puedo equivocarme y decir la verdad.</p>
+ <br><button class="btn dark" onclick="go(1)">COMENZAR →</button>
+</div></section>
+
+<section class="slide"><div class="panel">
+ <div class="kicker">Nuestras 4 sesiones</div><h2>🎯 Cuatro misiones para octubre</h2>
+ <div class="grid2">
+  <div class="card mission" onclick="go(2)"><h3>🚦 MISIÓN 1</h3><div class="bigline">El semáforo</div><p>Descubrimos qué significa tener integridad.</p></div>
+  <div class="card mission" onclick="go(5)"><h3>🗣️👣 MISIÓN 2</h3><div class="bigline">¿Coinciden?</div><p>Comparamos nuestras palabras y acciones.</p></div>
+  <div class="card mission" onclick="go(8)"><h3>✏️ MISIÓN 3</h3><div class="bigline">El lápiz roto</div><p>Aprendemos a reconocer y reparar un error.</p></div>
+  <div class="card mission" onclick="go(13)"><h3>🧭 MISIÓN 4</h3><div class="bigline">La brújula</div><p>Practicamos cómo elegir hacer lo correcto.</p></div>
+ </div>
+</div></section>
+
+<section class="slide"><div class="panel center">
+ <div class="kicker">Sesión 1 · 20 minutos</div><h2>🚦 El semáforo de la integridad</h2>
+ <div class="emoji">💭 → 🗣️ → 👣</div>
+ <p class="bigline">Integridad es intentar que <span class="accent">lo que digo</span> y <span class="accent">lo que hago</span> coincidan.</p>
+ <p>🟢 Sí &nbsp;&nbsp; 🟡 Tengo dudas &nbsp;&nbsp; 🔴 No</p>
+ <button class="btn dark" onclick="trafficStart()">¡A JUGAR! →</button>
+</div></section>
+
+<section class="slide"><div class="panel center" id="trafficPanel"></div></section>
+
+<section class="slide"><div class="panel center">
+ <div class="emoji">🏆🚦</div><div class="kicker">Misión 1 completada</div><h2>¡Ya sabemos buscar la integridad!</h2>
+ <p class="pill">«Puedo equivocarme y decir la verdad.»</p>
+</div></section>
+
+<section class="slide"><div class="panel center">
+ <div class="kicker">Sesión 2 · 20 minutos</div><h2>🗣️👣 ¿Coinciden?</h2>
+ <div class="grid2"><div class="card"><div class="emoji">🗣️</div><h3>LO QUE DIGO</h3></div><div class="card"><div class="emoji">👣</div><h3>LO QUE HAGO</h3></div></div>
+ <p class="bigline">¿Van juntos?</p><button class="btn dark" onclick="matchStart()">EMPEZAR →</button>
+</div></section>
+
+<section class="slide"><div class="panel center" id="matchPanel"></div></section>
+
+<section class="slide"><div class="panel center">
+ <div class="kicker">🎯 Mi pequeño reto</div><h2>Elige UNA promesa para hoy</h2>
+ <div class="grid3"><button class="btn blue">🤫 Escuchar</button><button class="btn green">🧹 Recoger</button><button class="btn yellow">🙋 Esperar mi turno</button><button class="btn violet">❤️ Ayudar</button><button class="btn soft">🗣️ Decir la verdad</button></div>
+ <p class="bigline">Una promesa pequeña que sí puedo intentar cumplir.</p>
+</div></section>
+
+<section class="slide"><div class="panel center" id="storyPanel">
+ <div class="kicker">Sesión 3 · 20 minutos</div><h2>✏️ El misterio del lápiz roto</h2>
+ <div class="storybox"><div class="emoji">👦✏️</div><p class="scenario">Lucas está trabajando tranquilamente con un lápiz de clase.</p></div>
+ <button class="btn dark" onclick="story(1)">SIGUIENTE →</button>
+</div></section>
+
+<section class="slide"><div class="panel center">
+ <div class="kicker">Elige un final</div><h2>🤔 ¿Qué debería hacer Lucas?</h2>
+ <div class="grid2"><button class="btn red" onclick="storyChoice(false)">🙈 «Yo no he sido.»</button><button class="btn green" onclick="storyChoice(true)">🙋 «He sido yo. Ha sido sin querer.»</button></div>
+ <div id="storyFeedback"></div>
+</div></section>
+
+<section class="slide"><div class="panel center">
+ <div class="kicker">Reconozco · Reparo · Aprendo</div><h2>🔧 ¿Qué hacemos después de un error?</h2>
+ <div class="flow"><span>💥 ERROR</span>→<span>🗣️ LO RECONOZCO</span>→<span>🔧 INTENTO REPARARLO</span>→<span>🌱 APRENDO</span></div>
+ <p class="bigline">Decir la verdad no borra el error, pero nos ayuda a arreglarlo.</p>
+</div></section>
+
+<section class="slide"><div class="panel center">
+ <div class="emoji">🌱⭐</div><div class="kicker">Misión 3 completada</div><h2>Un error no me define</h2>
+ <p class="pill">Puedo reconocerlo, repararlo y volver a intentarlo.</p>
+</div></section>
+
+<section class="slide"><div class="panel center">
+ <div class="kicker">Sesión 4 · 20 minutos</div><h2>🧭 Mi brújula de la integridad</h2>
+ <div class="compass"><div class="needle"></div></div>
+ <button class="btn dark" onclick="go(14)">DESCUBRIRLA →</button>
+</div></section>
+
+<section class="slide"><div class="panel center">
+ <h2>🧭 Antes de actuar, me pregunto…</h2>
+ <div class="grid3"><div class="card"><div class="emoji">1️⃣</div><h3>¿ES VERDAD?</h3></div><div class="card"><div class="emoji">2️⃣</div><h3>¿ESTÁ BIEN?</h3></div><div class="card"><div class="emoji">3️⃣</div><h3>¿LO QUE DIGO Y HAGO COINCIDEN?</h3></div></div>
+ <button class="btn dark" onclick="compassStart()">PONERLA A PRUEBA →</button>
+</div></section>
+
+<section class="slide"><div class="panel center" id="compassPanel"></div></section>
+
+<section class="slide"><div class="panel center">
+ <div class="kicker">🏆 Octubre · Integridad</div><h2>SOMOS UNA CLASE CON INTEGRIDAD</h2>
+ <div class="promise">🗣️ Decimos la verdad.<br>🤝 Intentamos cumplir nuestra palabra.<br>❤️ Podemos equivocarnos.<br>🔧 Podemos reparar nuestros errores.<br>🌱 Podemos volver a intentarlo.</div><br>
+ <button class="btn violet" onclick="celebrate()">🤝 HACEMOS NUESTRA PROMESA</button>
+</div></section>
+
+<section class="slide"><div class="panel center">
+ <div class="emoji">🏆🧭⭐</div><h1>¡AVENTURA COMPLETADA!</h1>
+ <p class="bigline">«Puedo equivocarme y decir la verdad.»</p>
+ <p>Mr. Ríos · 2ºA</p><button class="btn dark" onclick="go(0)">VOLVER AL INICIO 🏠</button>
+</div></section>
+</main>
+
+<footer><button onclick="prev()">← ANTERIOR</button><div class="counter" id="counter">1 / 18</div><button onclick="next()">SIGUIENTE →</button></footer>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')]; let current=0; let scale=1;
+const traffic=[
+["🧸","Digo que voy a recoger los juguetes… y los recojo.","g","¡Hay integridad!","Lo que digo y lo que hago coinciden."],
+["✏️","Rompo un lápiz sin querer y digo: «Yo no he sido».","r","No coinciden","Puedo equivocarme y decir la verdad."],
+["🤝","Prometo ayudar a un compañero… y le ayudo.","g","¡Hay integridad!","He cumplido mi palabra."],
+["📖","Digo que voy a escuchar… pero sigo hablando.","r","No coinciden","Mis acciones no coinciden con mis palabras."],
+["😟","Olvido hacer algo que había prometido.","y","Pensemos…","Olvidar puede pasar. Puedo reconocerlo e intentar repararlo."],
+["🎨","Encuentro un color que no es mío y pregunto de quién es.","g","¡Hay integridad!","Hago lo correcto aunque nadie me obligue."],
+["🙈","Hago algo que no debía y culpo a otra persona.","r","No hay integridad","Reconocer mi parte me ayuda a crecer."]
+]; let ti=0;
+const matches=[
+["🗣️ «Voy a escuchar.»","👣 Escucho mientras mi compañero habla.",1],
+["🗣️ «Voy a compartir.»","👣 No dejo a nadie usar mis colores.",0],
+["🗣️ «He sido yo.»","👣 Reconozco que tiré el agua sin querer.",1],
+["🗣️ «Voy a recoger.»","👣 Dejo todo en el suelo y me voy.",0],
+["🗣️ «Te ayudaré.»","👣 Ayudo a mi compañero cuando lo necesita.",1]
+];let mi=0;
+const cases=[
+["🧽","Encuentras una goma en el suelo. Nadie sabe de quién es.",["Me la guardo","Pregunto de quién es","La escondo"],1],
+["⚽","Sin querer empujas a alguien jugando.",["Me voy","Digo que fue otro","Lo reconozco y pregunto si está bien"],2],
+["💧","Derramas agua y nadie te ha visto.",["Aviso y ayudo a limpiarla","Me voy","Culpo a alguien"],0],
+["📚","Prometiste recoger un libro, pero lo olvidaste.",["Digo que nunca lo prometí","Lo reconozco y lo recojo ahora","Culpo a otro"],1],
+["✏️","Un amigo quiere copiar tu trabajo.",["Le dejo copiar","Le doy la respuesta","Le ayudo a entenderlo sin darle la respuesta"],2]
+];let ci=0;
+function go(n){current=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,i)=>s.classList.toggle('active',i===current));document.getElementById('counter').textContent=`${current+1} / ${slides.length}`;setNav()}
+function next(){go(current+1)}function prev(){go(current-1)}
+function setNav(){let ns=[...document.querySelectorAll('.nav button')];ns.forEach(x=>x.classList.remove('active'));let i=current>=13?4:current>=8?3:current>=5?2:current>=2?1:0;ns[i]?.classList.add('active')}
+function size(n){scale=n===0?1:n<0?.86:1.17;document.documentElement.style.setProperty('--scale',scale)}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')next();if(e.key==='ArrowLeft')prev();if(e.key==='Home')go(0)})
+function trafficStart(){ti=0;go(3);renderTraffic()}
+function renderTraffic(){let q=traffic[ti];
+if(language==='en'){const T=[
+["🧸","I say I will tidy up the toys… and I do.","g","Integrity!","What I say and what I do match."],
+["✏️","I break a pencil by accident and say: “It wasn't me.”","r","They don't match","I can make a mistake and tell the truth."],
+["🤝","I promise to help a classmate… and I help.","g","Integrity!","I kept my word."],
+["📖","I say I will listen… but I keep talking.","r","They don't match","My actions do not match my words."],
+["😟","I forget to do something I promised.","y","Let's think…","Forgetting can happen. I can admit it and try to repair it."],
+["🎨","I find a crayon that isn't mine and ask whose it is.","g","Integrity!","I do the right thing even when nobody makes me."],
+["🙈","I do something wrong and blame someone else.","r","No integrity","Admitting my part helps me grow."]];q=T[ti];}if(!q){go(4);celebrate();return}document.getElementById('trafficPanel').innerHTML=`<div class="kicker">Semáforo · ${ti+1}/${traffic.length}</div><div class="emoji">${q[0]}</div><div class="scenario">${q[1]}</div><div class="traffic"><button class="light lg" onclick="trafficAnswer('g')"></button><button class="light ly" onclick="trafficAnswer('y')"></button><button class="light lr" onclick="trafficAnswer('r')"></button></div><div id="tf"></div>`}
+function trafficAnswer(a){let q=traffic[ti],ok=a===q[2];document.getElementById('tf').innerHTML=`<div class="feedback">${ok?'⭐ ¡BIEN PENSADO!':'🤔 MIREMOS OTRA VEZ'}<br><b>${q[3]}</b><br>${q[4]}</div><button class="btn dark" onclick="ti++;renderTraffic()">SIGUIENTE →</button>`}
+function matchStart(){mi=0;go(6);renderMatch()}
+function renderMatch(){let q=matches[mi];
+if(language==='en'){const M=[
+["🗣️ “I will listen.”","👣 I listen while my classmate speaks.",1],
+["🗣️ “I will share.”","👣 I don't let anyone use my crayons.",0],
+["🗣️ “It was me.”","👣 I admit I spilled the water by accident.",1],
+["🗣️ “I will tidy up.”","👣 I leave everything on the floor and go.",0],
+["🗣️ “I will help you.”","👣 I help my classmate when they need it.",1]];q=M[mi];}if(!q){go(7);celebrate();return}document.getElementById('matchPanel').innerHTML=`<div class="kicker">¿Coinciden? · ${mi+1}/${matches.length}</div><div class="grid2"><div class="card"><h3>${q[0]}</h3></div><div class="card"><h3>${q[1]}</h3></div></div><div><button class="btn green" onclick="matchAnswer(1)">✅ COINCIDEN</button><button class="btn red" onclick="matchAnswer(0)">❌ NO COINCIDEN</button></div><div id="mf"></div>`}
+function matchAnswer(a){let q=matches[mi],ok=a===q[2];document.getElementById('mf').innerHTML=`<div class="feedback">${ok?'🌟 ¡CORRECTO!':'💭 PENSEMOS OTRA VEZ'}<br>${q[2]?'Las palabras y las acciones van juntas.':'Las palabras y las acciones no coinciden. ¿Cómo podríamos arreglarlo?'}</div><button class="btn dark" onclick="mi++;renderMatch()">SIGUIENTE →</button>`}
+function story(n){let p=document.getElementById('storyPanel');if(n===1){p.innerHTML=`<div class="kicker">El misterio del lápiz roto</div><div class="storybox"><div class="emoji">💥</div><h2>¡CRACK!</h2><p class="scenario">¡Oh, no! El lápiz se ha roto.</p></div><button class="btn dark" onclick="story(2)">SIGUIENTE →</button>`}else if(n===2){p.innerHTML=`<div class="kicker">El misterio del lápiz roto</div><div class="storybox"><div class="emoji">👀</div><h2>Nadie lo ha visto</h2><p class="scenario">Lucas mira alrededor. Nadie parece haber visto lo que ha pasado.</p></div><button class="btn dark" onclick="story(3)">SIGUIENTE →</button>`}else{p.innerHTML=`<div class="kicker">El misterio del lápiz roto</div><div class="storybox"><div class="emoji">👩‍🏫</div><h2>La profesora pregunta…</h2><p class="scenario">«¿Quién ha roto el lápiz?»</p></div><button class="btn dark" onclick="go(9)">ELEGIR UN FINAL →</button>`}}
+function storyChoice(ok){document.getElementById('storyFeedback').innerHTML=ok?`<div class="feedback">⭐ <b>¡INTEGRIDAD!</b><br>Lucas se ha equivocado, pero ha dicho la verdad.<br>Ahora puede intentar repararlo.</div><button class="btn dark" onclick="go(10)">¿CÓMO LO REPARAMOS? →</button>`:`<div class="feedback">🤔 <b>PENSEMOS…</b><br>¿Lo que Lucas dice coincide con lo que realmente pasó?<br><b>Equivocarse no nos hace malos.</b> Podemos reconocerlo y decir la verdad.</div>`}
+function compassStart(){ci=0;go(15);renderCompass()}
+function renderCompass(){let q=cases[ci];
+if(language==='en'){const C=[
+["🧽","You find an eraser on the floor. Nobody knows whose it is.",["I keep it","I ask whose it is","I hide it"],1],
+["⚽","You accidentally push someone while playing.",["I walk away","I say someone else did it","I admit it and ask if they are okay"],2],
+["💧","You spill water and nobody sees you.",["I tell someone and help clean it","I walk away","I blame someone"],0],
+["📚","You promised to put a book away, but you forgot.",["I say I never promised","I admit it and put it away now","I blame someone"],1],
+["✏️","A friend wants to copy your work.",["I let them copy","I give them the answer","I help them understand without giving the answer"],2]];q=C[ci];}if(!q){go(16);celebrate();return}document.getElementById('compassPanel').innerHTML=`<div class="kicker">Pon a prueba tu brújula · ${ci+1}/${cases.length}</div><div class="emoji">${q[0]}</div><div class="scenario">${q[1]}</div><div>${q[2].map((x,i)=>`<button class="btn ${['yellow','blue','violet'][i]}" onclick="compassAnswer(${i})">${String.fromCharCode(65+i)}) ${x}</button>`).join('')}</div><div id="cf"></div>`}
+function compassAnswer(i){let q=cases[ci],ok=i===q[3];document.getElementById('cf').innerHTML=`<div class="feedback">${ok?'⭐ ¡TU BRÚJULA FUNCIONA!':'🧭 CONSULTA TU BRÚJULA'}<br>${ok?'Has elegido una acción honesta y responsable.':'¿Es verdad? ¿Está bien? ¿Lo que digo y hago coincide?'}</div>${ok?'<button class="btn dark" onclick="ci++;renderCompass()">SIGUIENTE →</button>':''}`}
+function celebrate(){for(let i=0;i<30;i++){let x=document.createElement('div');x.className='confetti';x.textContent=['⭐','✨','🍃','🟡','💚'][i%5];x.style.left=Math.random()*100+'vw';x.style.animationDelay=Math.random()*.6+'s';document.body.appendChild(x);setTimeout(()=>x.remove(),3000)}if(current===16)setTimeout(()=>go(17),1100)}
+setNav();
+
+const ES={
+"Inicio":"Inicio","🚦 Semáforo":"🚦 Semáforo","🗣️👣 ¿Coinciden?":"🗣️👣 ¿Coinciden?","✏️ Lápiz roto":"✏️ Lápiz roto","🧭 Brújula":"🧭 Brújula",
+"Educación del Carácter · Octubre · 2.º de Primaria":"Educación del Carácter · Octubre · 2.º de Primaria",
+"🧭 La aventura de la INTEGRIDAD":"🧭 La aventura de la INTEGRIDAD","«Lo que digo y lo que hago»":"«Lo que digo y lo que hago»",
+"💬 Puedo equivocarme y decir la verdad.":"💬 Puedo equivocarme y decir la verdad.","COMENZAR →":"COMENZAR →",
+"Nuestras 4 sesiones":"Nuestras 4 sesiones","🎯 Cuatro misiones para octubre":"🎯 Cuatro misiones para octubre",
+"🚦 MISIÓN 1":"🚦 MISIÓN 1","El semáforo":"El semáforo","Descubrimos qué significa tener integridad.":"Descubrimos qué significa tener integridad.",
+"🗣️👣 MISIÓN 2":"🗣️👣 MISIÓN 2","¿Coinciden?":"¿Coinciden?","Comparamos nuestras palabras y acciones.":"Comparamos nuestras palabras y acciones.",
+"✏️ MISIÓN 3":"✏️ MISIÓN 3","El lápiz roto":"El lápiz roto","Aprendemos a reconocer y reparar un error.":"Aprendemos a reconocer y reparar un error.",
+"🧭 MISIÓN 4":"🧭 MISIÓN 4","La brújula":"La brújula","Practicamos cómo elegir hacer lo correcto.":"Practicamos cómo elegir hacer lo correcto.",
+"Sesión 1 · 20 minutos":"Sesión 1 · 20 minutos","🚦 El semáforo de la integridad":"🚦 El semáforo de la integridad",
+"Integridad es intentar que lo que digo y lo que hago coincidan.":"Integridad es intentar que lo que digo y lo que hago coincidan.",
+"¡A JUGAR! →":"¡A JUGAR! →","Sesión 2 · 20 minutos":"Sesión 2 · 20 minutos","🗣️👣 ¿Coinciden?":"🗣️👣 ¿Coinciden?",
+"LO QUE DIGO":"LO QUE DIGO","LO QUE HAGO":"LO QUE HAGO","¿Van juntos?":"¿Van juntos?","EMPEZAR →":"EMPEZAR →",
+"🎯 Mi pequeño reto":"🎯 Mi pequeño reto","Elige UNA promesa para hoy":"Elige UNA promesa para hoy",
+"🤫 Escuchar":"🤫 Escuchar","🧹 Recoger":"🧹 Recoger","🙋 Esperar mi turno":"🙋 Esperar mi turno","❤️ Ayudar":"❤️ Ayudar","🗣️ Decir la verdad":"🗣️ Decir la verdad",
+"Una promesa pequeña que sí puedo intentar cumplir.":"Una promesa pequeña que sí puedo intentar cumplir.",
+"Sesión 3 · 20 minutos":"Sesión 3 · 20 minutos","✏️ El misterio del lápiz roto":"✏️ El misterio del lápiz roto",
+"Lucas está trabajando tranquilamente con un lápiz de clase.":"Lucas está trabajando tranquilamente con un lápiz de clase.",
+"SIGUIENTE →":"SIGUIENTE →","Elige un final":"Elige un final","🤔 ¿Qué debería hacer Lucas?":"🤔 ¿Qué debería hacer Lucas?",
+"🙈 «Yo no he sido.»":"🙈 «Yo no he sido.»","🙋 «He sido yo. Ha sido sin querer.»":"🙋 «He sido yo. Ha sido sin querer.»",
+"Reconozco · Reparo · Aprendo":"Reconozco · Reparo · Aprendo","🔧 ¿Qué hacemos después de un error?":"🔧 ¿Qué hacemos después de un error?",
+"Decir la verdad no borra el error, pero nos ayuda a arreglarlo.":"Decir la verdad no borra el error, pero nos ayuda a arreglarlo.",
+"Misión 3 completada":"Misión 3 completada","Un error no me define":"Un error no me define",
+"Puedo reconocerlo, repararlo y volver a intentarlo.":"Puedo reconocerlo, repararlo y volver a intentarlo.",
+"Sesión 4 · 20 minutos":"Sesión 4 · 20 minutos","🧭 Mi brújula de la integridad":"🧭 Mi brújula de la integridad","DESCUBRIRLA →":"DESCUBRIRLA →",
+"🧭 Antes de actuar, me pregunto…":"🧭 Antes de actuar, me pregunto…","¿ES VERDAD?":"¿ES VERDAD?","¿ESTÁ BIEN?":"¿ESTÁ BIEN?",
+"¿LO QUE DIGO Y HAGO COINCIDEN?":"¿LO QUE DIGO Y HAGO COINCIDEN?","PONERLA A PRUEBA →":"PONERLA A PRUEBA →",
+"🏆 Octubre · Integridad":"🏆 Octubre · Integridad","SOMOS UNA CLASE CON INTEGRIDAD":"SOMOS UNA CLASE CON INTEGRIDAD",
+"🤝 HACEMOS NUESTRA PROMESA":"🤝 HACEMOS NUESTRA PROMESA","¡AVENTURA COMPLETADA!":"¡AVENTURA COMPLETADA!",
+"VOLVER AL INICIO 🏠":"VOLVER AL INICIO 🏠","← ANTERIOR":"← ANTERIOR"
+};
+const EN={
+"Inicio":"Home","🚦 Semáforo":"🚦 Traffic light","🗣️👣 ¿Coinciden?":"🗣️👣 Do they match?","✏️ Lápiz roto":"✏️ Broken pencil","🧭 Brújula":"🧭 Compass",
+"Educación del Carácter · Octubre · 2.º de Primaria":"Character Education · October · Year 2",
+"🧭 La aventura de la INTEGRIDAD":"🧭 The INTEGRITY Adventure","«Lo que digo y lo que hago»":"“What I say and what I do”",
+"💬 Puedo equivocarme y decir la verdad.":"💬 I can make a mistake and tell the truth.","COMENZAR →":"START →",
+"Nuestras 4 sesiones":"Our 4 sessions","🎯 Cuatro misiones para octubre":"🎯 Four missions for October",
+"🚦 MISIÓN 1":"🚦 MISSION 1","El semáforo":"The traffic light","Descubrimos qué significa tener integridad.":"We discover what integrity means.",
+"🗣️👣 MISIÓN 2":"🗣️👣 MISSION 2","¿Coinciden?":"Do they match?","Comparamos nuestras palabras y acciones.":"We compare our words and actions.",
+"✏️ MISIÓN 3":"✏️ MISSION 3","El lápiz roto":"The broken pencil","Aprendemos a reconocer y reparar un error.":"We learn to admit and repair a mistake.",
+"🧭 MISIÓN 4":"🧭 MISSION 4","La brújula":"The compass","Practicamos cómo elegir hacer lo correcto.":"We practise choosing what is right.",
+"Sesión 1 · 20 minutos":"Session 1 · 20 minutes","🚦 El semáforo de la integridad":"🚦 The Integrity Traffic Light",
+"Integridad es intentar que lo que digo y lo que hago coincidan.":"Integrity means trying to make what I say and what I do match.",
+"¡A JUGAR! →":"LET'S PLAY! →","Sesión 2 · 20 minutos":"Session 2 · 20 minutes","🗣️👣 ¿Coinciden?":"🗣️👣 Do they match?",
+"LO QUE DIGO":"WHAT I SAY","LO QUE HAGO":"WHAT I DO","¿Van juntos?":"Do they match?","EMPEZAR →":"START →",
+"🎯 Mi pequeño reto":"🎯 My little challenge","Elige UNA promesa para hoy":"Choose ONE promise for today",
+"🤫 Escuchar":"🤫 Listen","🧹 Recoger":"🧹 Tidy up","🙋 Esperar mi turno":"🙋 Wait my turn","❤️ Ayudar":"❤️ Help","🗣️ Decir la verdad":"🗣️ Tell the truth",
+"Una promesa pequeña que sí puedo intentar cumplir.":"A small promise I can really try to keep.",
+"Sesión 3 · 20 minutos":"Session 3 · 20 minutes","✏️ El misterio del lápiz roto":"✏️ The Mystery of the Broken Pencil",
+"Lucas está trabajando tranquilamente con un lápiz de clase.":"Lucas is quietly working with a classroom pencil.",
+"SIGUIENTE →":"NEXT →","Elige un final":"Choose an ending","🤔 ¿Qué debería hacer Lucas?":"🤔 What should Lucas do?",
+"🙈 «Yo no he sido.»":"🙈 “It wasn't me.”","🙋 «He sido yo. Ha sido sin querer.»":"🙋 “It was me. It was an accident.”",
+"Reconozco · Reparo · Aprendo":"Admit · Repair · Learn","🔧 ¿Qué hacemos después de un error?":"🔧 What do we do after a mistake?",
+"Decir la verdad no borra el error, pero nos ayuda a arreglarlo.":"Telling the truth does not erase a mistake, but it helps us repair it.",
+"Misión 3 completada":"Mission 3 complete","Un error no me define":"A mistake does not define me",
+"Puedo reconocerlo, repararlo y volver a intentarlo.":"I can admit it, repair it and try again.",
+"Sesión 4 · 20 minutos":"Session 4 · 20 minutes","🧭 Mi brújula de la integridad":"🧭 My Integrity Compass","DESCUBRIRLA →":"DISCOVER IT →",
+"🧭 Antes de actuar, me pregunto…":"🧭 Before I act, I ask myself…","¿ES VERDAD?":"IS IT TRUE?","¿ESTÁ BIEN?":"IS IT RIGHT?",
+"¿LO QUE DIGO Y HAGO COINCIDEN?":"DO WHAT I SAY AND DO MATCH?","PONERLA A PRUEBA →":"TEST IT →",
+"🏆 Octubre · Integridad":"🏆 October · Integrity","SOMOS UNA CLASE CON INTEGRIDAD":"WE ARE A CLASS WITH INTEGRITY",
+"🤝 HACEMOS NUESTRA PROMESA":"🤝 MAKE OUR PROMISE","¡AVENTURA COMPLETADA!":"ADVENTURE COMPLETE!",
+"VOLVER AL INICIO 🏠":"BACK HOME 🏠","← ANTERIOR":"← BACK"
+};
+let language='es';
+const originalText=new Map();
+document.querySelectorAll('h1,h2,h3,p,.kicker,.pill,.bigline,.btn,.nav button,footer button').forEach(el=>originalText.set(el,el.textContent.trim()));
+function toggleLanguage(){
+ language=language==='es'?'en':'es';
+ document.documentElement.lang=language;
+ document.getElementById('langBtn').textContent=language==='es'?'🇪🇸 ES':'🇬🇧 EN';
+ const dict=language==='es'?ES:EN;
+ originalText.forEach((txt,el)=>{ if(dict[txt]) el.textContent=dict[txt]; });
+ // Dynamic games are rebuilt in the chosen language when entered.
+}
+
+</script>
+</body>
+</html>
